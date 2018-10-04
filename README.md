@@ -5,9 +5,33 @@ Install Helm client
 helm init --client-only
 ```
 
-Install Helm client and Tiller to the current cluster
+Install Helm client and Tiller to the current cluster with RBAC
+
+rbac-config.yaml
 ```
-helm init
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: tiller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
+```
+
+```
+kubectl create -f rbac-config.yaml
+helm init --service-account tiller
 ```
 
 Install and upgrade Tiller to the current cluster
@@ -93,7 +117,7 @@ helm delete foo
 ```
 
 
-# Upgrading Helm charts
+# Upgrading Helm Charts
 
 Return the variables for a release
 ```
@@ -113,4 +137,22 @@ helm history foo
 Rollback to a previous release number
 ```
 helm rollback foo 1
+```
+
+
+# Creating Helm Charts
+
+Create a blank chart
+```
+helm create foo
+```
+
+Lint the chart
+```
+helm lint
+```
+
+Package the chart into foo.tgz
+```
+helm package foo
 ```
