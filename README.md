@@ -149,7 +149,7 @@ helm create foo
 
 Lint the chart
 ```
-helm lint
+helm lint foo
 ```
 
 Package the chart into foo.tgz
