@@ -7,8 +7,8 @@ helm init --client-only
 
 Install Helm client and Tiller to the current cluster with RBAC
 
-rbac-config.yaml
 ```
+# rbac-config.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
