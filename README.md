@@ -99,6 +99,8 @@ helm inspect values stable/mysql
 Install a Helm chart
 ```
 helm install --name foo stable/mysql
+helm install --name foo bar-1.2.3.tgz
+helm install --name foo https://example.com/charts/bar-1.2.3.tgz
 ```
 
 Install a Helm chart and override variables
