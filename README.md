@@ -116,7 +116,7 @@ helm status foo
 
 Delete a Helm chart
 ```
-helm delete foo
+helm delete --purge foo
 ```
 
 
