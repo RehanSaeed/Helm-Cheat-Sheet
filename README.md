@@ -160,6 +160,11 @@ Package the chart into foo.tgz
 helm package foo
 ```
 
+Install chart dependencies
+```
+helm dependency update
+```
+
 # Chart Folder Structure
 
 ```
@@ -173,4 +178,11 @@ wordpress/
   templates/          # A directory of templates that, when combined with values,
                       # will generate valid Kubernetes manifest files.
   templates/NOTES.txt # OPTIONAL: A plain text file containing short usage notes
+```
+
+# Azure Helm
+
+Add an Azure Helm repo
+```
+az acr helm repo add -n foo
 ```
