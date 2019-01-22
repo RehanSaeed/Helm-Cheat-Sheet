@@ -184,5 +184,5 @@ wordpress/
 
 Add an Azure Helm repo
 ```
-az acr helm repo add -n foo
+az acr helm repo add --name foo
 ```
